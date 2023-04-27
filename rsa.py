@@ -1,26 +1,22 @@
 import random
 
-def getPrime(x,y):      
-    isPrime = False
-    if x<2: x=2
+def IsPrime(x):
 
-    while not isPrime:
-        pPrime=random.randrange(x,y)                #random Zahl in range wird generiert
-        isPrime=True
-        for i in range(2,pPrime):                   
-            if pPrime % i == 0: isPrime = False     #wird nach Teilern durchsucht
+    isPrime=True
+    for i in range(2,x):                   
+        if x % i == 0: isPrime = False     #mögliche Primzahl wird nach Teilern durchsucht
         
-    return pPrime
+    return isPrime
 
-def getPrime2(x,y):
+def GetPrime(x,y):
     isPrime = False
     if x<2: x=2
 
     while not isPrime:
         pPrime=random.randrange(x,y)                #random Zahl in range wird generiert
         if pow(2,(pPrime-1))%pPrime==1:             #Fermats kleiner Satz wird angewendet
-            isPrime=True
+            isPrime=IsPrime(pPrime)
         
     return pPrime
 
-print(getPrime2(0,1000))
+print(GetPrime(0,1000))
