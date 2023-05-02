@@ -13,20 +13,24 @@ def BreakPrime(x):
             y = y/2
         else:
             a = y
-            while goes:
+            goes2=True
+            while goes2:
                 a -= 1
                 if (y % a) == 0:
-                    Ax.append(y/a)
                     Ax.append(a)
-                    goes = False
-            goes = False
+                    y = y/a
+                    goes2 = False
+                    if IsPrime(y, False, None): 
+                        goes = False
+                        Ax.append(y)
+
     return Ax
 
 def IsPrime(x, isE, An):
 
     if not isE:
         isPrime=True
-        for i in range(2,x):                   
+        for i in range(2,int(x)):                   
             if x % i == 0: isPrime = False     #mögliche Primzahl wird nach Teilern durchsucht
     else:
         isPrime=True
@@ -52,9 +56,9 @@ q = GetPrime(0,end,False,None)
 print(f'q: {q}')
 n = p*q
 print(f'n = p*q = {p}{q} = {n}')
-An = BreakPrime(n)
-print(An)
 m = (p-1)*(q-1)
 print(f'm: {m}')
+An = BreakPrime(m)
+print(An)
 e = GetPrime(0,m,True,An)
 print(f'e: {e}')
