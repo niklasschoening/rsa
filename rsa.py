@@ -3,27 +3,21 @@ import random
 end = 1000
 
 def BreakPrime(x):
-    goes = True
-    y = x
     Ax = []
-
-    while goes:
-        if (y % 2) == 0:      #if even
-            Ax.append(2)
-            y = y/2
-        else:
-            a = y
-            goes2=True
-            while goes2:
-                a -= 1
-                if (y % a) == 0:
-                    Ax.append(a)
-                    y = y/a
-                    goes2 = False
-                    if IsPrime(y, False, None): 
-                        goes = False
-                        Ax.append(y)
-
+    b1 = True
+    b2 = True
+    while b1:
+        a = 2
+        b2 = True
+        while b2:
+            if (x % a) == 0:
+                Ax.append(a)
+                x = x/a
+                if x == 1: 
+                    b1 = False
+                    break
+                b2 = False
+            a += 1
     return Ax
 
 def IsPrime(x, isE, An):
