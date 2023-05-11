@@ -44,6 +44,30 @@ def GetPrime(x,y, isE, An):
         
     return pPrime
 
+def GetD(e, m):
+    emodm = e%m
+    em = e/m
+    e2 = e
+    m2 = m
+    Aem = [em]
+
+    y=0
+    while emodm != 0:
+        e2 = m2
+        m2 = emodm
+        emodm = e2 % m2
+        em = e2/m2
+        Aem.append(em)
+        y += 1
+    print(Aem)
+    a = 0
+    b = 1
+    while y>0:
+        b = a-(Aem[y]*b)
+        print(b)
+        y -= 1
+
+
 p = GetPrime(0,end,False,None)
 print(f'p: {p}')
 q = GetPrime(0,end,False,None)
@@ -56,3 +80,4 @@ An = BreakPrime(m)
 print(An)
 e = GetPrime(0,m,True,An)
 print(f'e: {e}')
+GetD(e, m)
